@@ -25,7 +25,7 @@ class Program
     static bool startTimer = false;
     static DateTime startTime;
     static DigitalTwinsClient client;
-    static string twinId = "BOttlePosion";
+    static string twinId = "BottlePosion";
 
     static async Task Main(string[] args)
     {
@@ -52,7 +52,7 @@ class Program
         {
             var message = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
             Console.WriteLine($"Received message: {message}");
-            // 当收到指定消息时开始计时
+            // begin to count down the timer when receiving the message
             if (message.Contains("The Bottle is : On the Conveyer 1"))
             {
                 startTimer = true;
@@ -66,7 +66,7 @@ class Program
             }
         });
 
-        // 连接到 Azure Digital Twins
+        // connect to Azure Digital Twins
         string adtInstanceUrl = "https://your-digital-twins-instance.api.wcus.digitaltwins.azure.net";
         var credential = new DefaultAzureCredential();
         client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
