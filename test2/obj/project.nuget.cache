@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xiNZtfShVQ7aqljJ3icVhzHZW5cZHo/LxB1OgU2UMcDTMlGqPC89B3KVBmo7qgeoZ+Hzmfw16Z+aWU8AE1p0fw==",
+  "success": true,
+  "projectFilePath": "/home/masais/ziyu/mqtt/Mac-main/test2/test2.csproj",
+  "expectedPackageFiles": [
+    "/home/masais/.nuget/packages/mqttnet/4.3.6.1152/mqttnet.4.3.6.1152.nupkg.sha512"
+  ],
+  "logs": []
+}
