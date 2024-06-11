@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "0WRK2bIF3CH/llSmNo5QNzIXApGH/kkR51oX01naBX9GNZ+YJtFkPdgRqOcXKQMkiNLV23guGAQn4suP+GoG/g==",
+  "success": true,
+  "projectFilePath": "/Users/liziyu/Desktop/mqtt/mqtt/Receivemessage/Receivemessage.csproj",
+  "expectedPackageFiles": [
+    "/Users/liziyu/.nuget/packages/mqttnet/3.1.1/mqttnet.3.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

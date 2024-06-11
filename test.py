@@ -4,6 +4,7 @@ import time
 import json
 import random
 import string
+import paho.mqtt.client as mqtt
 # 
 mqtt_host = "localhost"
 mqtt_port = 1883
@@ -11,6 +12,12 @@ mqtt_port = 1883
 # 
 topic = "customer_topic"
 message = "Hello, Mosquitto!++++++++++++++++++++++++++++++++++++++++"
+# Create MQTT client and set client ID
+# client_id = "Client1"  # Set your desired client ID here
+# client = mqtt.Client(client_id)
+# # Connect to the MQTT broker
+# client.connect(mqtt_host, mqtt_port, 60)
+
 
 # generate the data list randomly, which contains time s
 def generate_data_list():

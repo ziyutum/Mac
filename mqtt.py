@@ -2,6 +2,9 @@
 ## DeprecationWarning: Callback API version 1 is deprecated, update to latest version  client = mqtt.Client()
 ## this code needs newer version of paho mqtt. in mac, the version is 2.1.0
 # functions will get error
+# ----------------------------------------------------------------------------
+# use the test version
+##############################################################################################
 import time
 import json
 import random
