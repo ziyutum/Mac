@@ -11,8 +11,9 @@ using System.Threading.Tasks;
 class Program
 {
     private static List<string> positionMessages = new List<string>();
-    private static List<(double x, double y, double angle)> positionList = new List<(double x, double y, double angle)>();
+    private static List<(DateTime timestamp, string position, double x, double y, double angle)> positionList = new List<(DateTime timestamp, string position, double x, double y, double angle)>();
     private static DateTime startTime;
+    private static string lastReceivedMessage = string.Empty;
 
     static async Task Main(string[] args)
     {
@@ -73,66 +74,73 @@ class Program
                 lastReceivedMessage = currentMessage;
             }
 
-            HandleMqttMessage(payload);
+            HandleMqttMessage(e, timestamp);
         });
 
         return mqttClient;
     }
 
-    
-    
-    static void HandleMqttMessage(MqttApplicationMessageReceivedEventArgs e)
+    static void HandleMqttMessage(MqttApplicationMessageReceivedEventArgs e, DateTime timestamp)
     {
         var payload = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
-        var timestamp = DateTime.Now;
+
+        string currentPosition = null;
 
         if (payload.StartsWith("The Bottle is : On the Conveyer 1   ,Position : On the Conveyer 1"))
         {
-            positionMessages.Add("ON_CONVEYER_1");
+            currentPosition = "ON_CONVEYER_1";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
         else if (payload.StartsWith("The Bottle is: Into the Switch 1      ,  Position: In the Switch 1"))
         {
-            positionMessages.Add("In_Switch_1");
+            currentPosition = "In_Switch_1";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
         else if (payload.StartsWith("The Bottle is: On the Conveyer 2   ,  Position : On the Conveyer 2"))
         {
-            positionMessages.Add("ON_CONVEYER_2");
+            currentPosition = "ON_CONVEYER_2";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
-
-         else if (payload.StartsWith("The Bottle is: Into the Switch 2      ,  Position: In the Switch 2"))
+        else if (payload.StartsWith("The Bottle is: Into the Switch 2      ,  Position: In the Switch 2"))
         {
-            positionMessages.Add("In_Switch_2");
+            currentPosition = "In_Switch_2";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
         else if (payload.StartsWith("The Bottle is: On the Conveyer 3   ,  Position : On the Conveyer 3"))
         {
-            positionMessages.Add("ON_CONVEYER_3");
+            currentPosition = "ON_CONVEYER_3";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
         else if (payload.StartsWith("The Bottle is: Into the Switch 3      ,  Position: In the Switch 3"))
         {
-            positionMessages.Add("In_Switch_3");
+            currentPosition = "In_Switch_3";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
         else if (payload.StartsWith("The Bottle is: On the Conveyer 4   ,  Position : On the Conveyer 4"))
         {
-            positionMessages.Add("ON_CONVEYER_4");
+            currentPosition = "ON_CONVEYER_4";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
         else if (payload.StartsWith("The Bottle is: At the Output      ,  Position:  At the Output"))
         {
-            positionMessages.Add("At_Output");
+            currentPosition = "At_Output";
+            positionMessages.Add(currentPosition);
             startTime = DateTime.Now;
         }
-        if (positionMessages.Count > 0)
+
+        if (currentPosition != null)
         {
             var elapsedTime = (DateTime.Now - startTime).TotalSeconds;
             double x, y, angle;
 
-            switch (positionMessages[positionMessages.Count - 1])
+            switch (currentPosition)
             {
                 case "ON_CONVEYER_1":
                     x = 0.3 * elapsedTime;
@@ -181,21 +189,21 @@ class Program
                     break;
             }
 
-             positionList.Add((x, y, angle));
+            positionList.Add((timestamp, currentPosition, x, y, angle));
 
             SaveToCsv(positionList, "position_data.csv");
             //Console.WriteLine($"Position data has been saved to position_data.csv");
         }
     }
 
-    static void SaveToCsv(List<(double x, double y, double angle)> data, string filePath)
+    static void SaveToCsv(List<(DateTime timestamp, string position, double x, double y, double angle)> data, string filePath)
     {
         using (var writer = new StreamWriter(filePath))
         {
-            writer.WriteLine("Timestamp,X,Y,Angle");
+            writer.WriteLine("Timestamp,Position,X,Y,Angle");
             foreach (var item in data)
             {
-                writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss},{item.x},{item.y},{item.angle}");
+                writer.WriteLine($"{item.timestamp:yyyy-MM-dd HH:mm:ss},{item.position},{item.x},{item.y},{item.angle}");
             }
         }
     }

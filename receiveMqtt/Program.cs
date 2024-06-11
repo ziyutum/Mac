@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿//dotnet add package MQTTnet --version 3.1.1
-=======
-﻿//dotnet add package MQTTnet --version 4.3.6.1152
->>>>>>> b2c97a60b751f2f1a76c1613e511e19c84145a10
 
 using MQTTnet;
 using MQTTnet.Client;
