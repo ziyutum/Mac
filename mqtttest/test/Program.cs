@@ -148,7 +148,7 @@ class Program
                     angle = 0;
                     break;
                 case "In_Switch_1":
-                    angle = 2.5 * elapsedTime;
+                    angle = Math.PI / 2 * (elapsedTime / 2);
                     x = Math.Cos(angle) * 2;
                     y = Math.Sin(angle) * 2;
                     break;
@@ -200,7 +200,7 @@ class Program
     {
         using (var writer = new StreamWriter(filePath))
         {
-            writer.WriteLine("Timestamp,Position,X,Y,Angle");
+            writer.WriteLine("Timestamp,Bottle_Position,Bottle_X,Botle_Y,SwichAngle");
             foreach (var item in data)
             {
                 writer.WriteLine($"{item.timestamp:yyyy-MM-dd HH:mm:ss},{item.position},{item.x},{item.y},{item.angle}");
