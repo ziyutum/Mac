@@ -24,7 +24,7 @@ class Program
     private static double x = 0, y = 0, angle = 0;
     private static readonly object lockObj = new object();
     private static DigitalTwinsClient m_azureClient;
-    private static List<string> updateTwinIds = new List<string> { "JointPosition1", "JointPosition2", "JointPosition3", "JointPosition4" };
+    private static List<string> updateTwinIds = new List<string> { "Bottle_Position", "Bottle_LocationX", "Bottle_LocationX", "BottleContainer_Capability" };
 
     static async Task Main(string[] args)
     {
