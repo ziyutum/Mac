@@ -1,5 +1,0 @@
-/Users/liziyu/Desktop/mqtt/mqtt/Receivemessage/obj/Debug/net7.0/Receivemessage.csproj.AssemblyReference.cache
-/Users/liziyu/Desktop/mqtt/mqtt/Receivemessage/obj/Debug/net7.0/Receivemessage.GeneratedMSBuildEditorConfig.editorconfig
-/Users/liziyu/Desktop/mqtt/mqtt/Receivemessage/obj/Debug/net7.0/Receivemessage.AssemblyInfoInputs.cache
-/Users/liziyu/Desktop/mqtt/mqtt/Receivemessage/obj/Debug/net7.0/Receivemessage.AssemblyInfo.cs
-/Users/liziyu/Desktop/mqtt/mqtt/Receivemessage/obj/Debug/net7.0/Receivemessage.csproj.CoreCompileInputs.cache
